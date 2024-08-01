@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
+
+/* Custom properties */
+:root {
+  --line--border--fill: #3498db;
+  --line--border--empty: #e0e0e0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f6f7fb;
+  font-family: "Muli", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+}
+
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 30px;
+  max-width: 100%;
+  width: 350px;
+}
+
+.progress-container::before {
+  content: "";
+  background-color: var(--line--border--empty);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 100%;
+  z-index: -1;
+}
+
+.progress {
+  background-color: var(--line--border--fill);
+  position: absolute;
+  /* set the progress line in the middle vertically */
+  top: 50%;
+  left: 0;
+  transform: translateY(
+    -50%
+  ); /* set the middle of the progress line in the middle*/
+  height: 4px;
+  width: 0%;
+  /* set the progress line behind the circle*/
+  z-index: -1;
+  transition: 0.4s ease;
+}
+
+.circle {
+  background-color: #fff;
+  color: #999;
+  /* 设置圆形*/
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--line--border--empty);
+  /* 让数字位于圆形正中间 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.4s ease;
+}
+
+.circle.active {
+  border-color: var(--line--border--fill);
+}
+
+.btn {
+  background-color: var(--line--border--fill);
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  /* 添加padding, 上下8px，左右30px*/
+  padding: 8px 30px;
+  margin: 5px;
+  font-size: 14px;
+}
+
+/* 让按钮被按下时缩小按钮*/
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:focus {
+  outline: 0;
+}
+
+.btn:disabled {
+  background-color: var(--line--border--empty);
+  cursor: not-allowed;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
